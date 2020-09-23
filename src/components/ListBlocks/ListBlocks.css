@@ -1,0 +1,15 @@
+.listBlocks{
+    margin: 0 auto;
+    text-align: center;
+    min-width: 90%;
+}
+
+.listBlocks > .block{
+    background-color: turquoise;
+    display: inline-block;
+    margin: 0 3px;
+    font-size: 10px;
+    color: #282c34;
+    text-align: center;
+    font-weight: bold;
+}
