@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './ListBlocks.css'
 
 function ListBlocks({ blocks, compare, sorted, swap }){
-    const [width, setWidth] = useState(Math.min(20, Math.ceil(window.innerWidth / blocks.length) - 8))
+    const [width, setWidth] = useState(Math.min(20, Math.ceil(window.innerWidth / blocks.length) - 5))
     const color = blocks.length <= 50 && width > 14 ? 'black' : 'transparent'
 
     useEffect(() => {

@@ -19,7 +19,7 @@ const Navbar = ({ handleLength, handleSpeed, handleAlgo, generateRandomArray, ha
                         <input type='range' onChange={handleLength} min='5' max={100} step='1' disabled={sorting} value={len}></input>
                     </div>
                     
-                    <select onChange={handleAlgo}>
+                    <select onChange={handleAlgo} disabled={sorting}>
                         <option value='bubbleSort'>Bubble Sort</option>
                         <option value='insertionSort'>Insertion Sort</option>
                         <option value='selectionSort'>Selection Sort</option>
