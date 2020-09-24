@@ -4,7 +4,7 @@ const swap = (arr, i, j) => {
     arr[j] = temp
 }
 
-const bubbleSort = (blocks, speed, setBlocks, setSorting, setCompare, setSortedIndex) => {
+const bubbleSort = (blocks, speed, setBlocks, setSorting, setCompare, setSortedIndex, setSwap) => {
 
     const dupBlocks = blocks.slice() // copying blocks array
     const order = []
@@ -15,12 +15,10 @@ const bubbleSort = (blocks, speed, setBlocks, setSorting, setCompare, setSortedI
         for (j = 0; j < dupBlocks.length - i - 1; j++) {
 
             // Pushing j and j + 1 to order and if swap than ushing the while duplicate blocks array
-
+            order.push([j, j + 1, null, null])
             if (dupBlocks[j] > dupBlocks[j + 1]) {
                 swap(dupBlocks, j, j + 1)
                 order.push([j, j + 1, dupBlocks.slice(), null]) 
-            } else{
-                order.push([j, j + 1, null, null])
             }
         }
         order.push([null, null, null, j]) // j-th element is in correct position
@@ -31,15 +29,18 @@ const bubbleSort = (blocks, speed, setBlocks, setSorting, setCompare, setSortedI
             setTimeout(function () {
                 const [j, k, arr, index] = order[i]
                 setCompare([j, k])
-            
+                setSwap([])
                 if(index !== null){
                     setSortedIndex((prevState) => (
                         [...prevState, index]
                     ))
                 }
     
-                if(arr) setBlocks(arr)
-    
+                if(arr){
+                    
+                    setBlocks(arr)
+                    setSwap([j, k])
+                }
                 if (++i < order.length){
                     loop(i)
                 } else {

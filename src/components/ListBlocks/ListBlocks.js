@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './ListBlocks.css'
 
-function ListBlocks({ blocks, compare, sorted }){
+function ListBlocks({ blocks, compare, sorted, swap }){
     const [width, setWidth] = useState(Math.min(20, Math.ceil(window.innerWidth / blocks.length) - 8))
     const color = blocks.length <= 50 && width > 14 ? 'black' : 'transparent'
 
@@ -27,6 +27,9 @@ function ListBlocks({ blocks, compare, sorted }){
                     bg = '#ffff50'
                 }
 
+                if(swap && (i === swap[0] || i === swap[1])){
+                    bg='red'
+                }
                 // i th element is in its correct position
                 if(sorted && sorted.includes(i)){
                     bg = '#4bc52e'

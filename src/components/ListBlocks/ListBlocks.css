@@ -2,6 +2,7 @@
     margin: 0 auto;
     text-align: center;
     min-width: 90%;
+    min-height: 520px;
 }
 
 .listBlocks > .block{
