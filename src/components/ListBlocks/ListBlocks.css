@@ -1,19 +1,19 @@
 .listBlocks{
     margin: 0 auto;
-    text-align: center;
-    min-width: 90%;
     min-height: 520px;
+    min-width: 90%;
+    text-align: center;
 }
 
 .listBlocks > .block{
     background-color: turquoise;
-    display: inline-block;
-    margin: 0 3px;
-    font-size: 10px;
     color: #282c34;
-    text-align: center;
+    display: inline-block;
+    font-size: 10px;
     font-weight: bold;
-    transition-property: height;
+    margin: 0 3px;
+    text-align: center;
     transition-duration: 150ms;
+    transition-property: height;
     transition-timing-function: ease-in;
 }
