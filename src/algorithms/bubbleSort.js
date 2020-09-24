@@ -24,33 +24,7 @@ const bubbleSort = (blocks, speed, setBlocks, setSorting, setCompare, setSortedI
         order.push([null, null, null, j]) // j-th element is in correct position
     }
 
-    const sortAccOrder = (order) => {
-        (function loop(i) {
-            setTimeout(function () {
-                const [j, k, arr, index] = order[i]
-                setCompare([j, k])
-                setSwap([])
-                if(index !== null){
-                    setSortedIndex((prevState) => (
-                        [...prevState, index]
-                    ))
-                }
-    
-                if(arr){
-                    
-                    setBlocks(arr)
-                    setSwap([j, k])
-                }
-                if (++i < order.length){
-                    loop(i)
-                } else {
-                    setSorting(false)
-                }   
-            }, speed)
-        })(0)
-    }
-
-    sortAccOrder(order)
+    return order
 }
 
 export default bubbleSort

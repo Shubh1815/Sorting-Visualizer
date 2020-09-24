@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import ListBlocks from './components/ListBlocks/ListBlocks'
 import bubbleSort from './algorithms/bubbleSort'
 import Legends from './components/Legends/Legends'
+import insertionSort from './algorithms/insertionSort'
 
 function App() {
 	// Generating shuffled array of 1 to len
@@ -39,12 +40,6 @@ function App() {
 		generateRandomArray(len)
 	}, [len])
 
-	// Sorting according to the algorithm
-	const handleSort = () => {
-		setSorting(true)
-		algo === 'bubbleSort' ? bubbleSort(blocks, speed, setBlocks, setSorting, setCompare, setSortedIndex, setSwap) : setSorting(false)
-	}
-
 	// setting the selected algorithm
 	const handleAlgo = (event) => {
 		setAlgo(event.target.value)
@@ -58,6 +53,45 @@ function App() {
 	// handling the speed of sorting
 	const handleSpeed = (event) => {
 		setSpeed(Math.ceil(400 / Number(event.target.value)))
+	}
+
+	// Sorting according to the algorithm
+	const handleSort = () => {
+		
+		const sortAccOrder = (order) => {
+			(function loop(i) {
+				setTimeout(function () {
+					const [j, k, arr, index] = order[i]
+					setCompare([j, k])
+					setSwap([])
+
+					if(index !== null){
+						setSortedIndex((prevState) => (
+							[...prevState, index]
+						))
+					}
+		
+					if(arr){
+						
+						setBlocks(arr)
+						setSwap([j, k])
+					}
+
+					if (++i < order.length){
+						loop(i)
+					} else {
+						setSorting(false)
+					}   
+				}, speed)
+			})(0)
+			
+		}
+
+		setSorting(true)
+
+		algo === 'bubbleSort' ? sortAccOrder(bubbleSort(blocks)) : 
+		algo === 'insertionSort' ?  sortAccOrder(insertionSort(blocks)) :
+		setSorting(false)
 	}
 
 	return (
