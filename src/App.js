@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+
 import Navbar from './components/Navbar/Navbar'
 import ListBlocks from './components/ListBlocks/ListBlocks'
-import bubbleSort from './algorithms/bubbleSort'
 import Legends from './components/Legends/Legends'
+
+// Algorithms
+import bubbleSort from './algorithms/bubbleSort'
 import insertionSort from './algorithms/insertionSort'
+import selectionSort from './algorithms/selectionSort'
 
 function App() {
 	// Generating shuffled array of 1 to len
@@ -38,7 +42,7 @@ function App() {
 	// Generating random array every time the length is changed by th user
 	useEffect(() => {
 		generateRandomArray(len)
-	}, [len])
+	}, [len, algo])
 
 	// setting the selected algorithm
 	const handleAlgo = (event) => {
@@ -91,6 +95,7 @@ function App() {
 
 		algo === 'bubbleSort' ? sortAccOrder(bubbleSort(blocks)) : 
 		algo === 'insertionSort' ?  sortAccOrder(insertionSort(blocks)) :
+		algo === 'selectionSort' ? sortAccOrder(selectionSort(blocks)) :
 		setSorting(false)
 	}
 

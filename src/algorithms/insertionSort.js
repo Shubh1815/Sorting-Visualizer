@@ -15,8 +15,8 @@ const insertionSort = (blocks) => {
         j = i - 1
         while(j >= 0 && dupBlocks[j] > dupBlocks[j + 1]){
             swap(dupBlocks, j, j + 1)
-            order.push([j, j + 1, null, null])
-            order.push([j, j + 1, dupBlocks.slice(), null])
+            order.push([j, j + 1, null, null])              // Compare
+            order.push([j, j + 1, dupBlocks.slice(), null]) // Swap
             j -= 1
         }
     }
