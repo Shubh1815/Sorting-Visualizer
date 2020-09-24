@@ -12,4 +12,7 @@
     color: #282c34;
     text-align: center;
     font-weight: bold;
+    transition-property: height;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in;
 }
