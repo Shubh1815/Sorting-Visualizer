@@ -1,4 +1,4 @@
-const order = []
+let order = []
 
 const merge = (dupBlocks, l, mid, r) => {
     let i = l, j = mid + 1
@@ -44,7 +44,7 @@ const mergeSortHelper = (dupBlocks, l, r) => {
 }
 
 const mergeSort = (blocks) => {
-
+    order = []
     const dupBlocks = blocks.slice() // copying blocks array
     
     mergeSortHelper(dupBlocks, 0, dupBlocks.length - 1)

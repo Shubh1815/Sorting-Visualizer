@@ -10,10 +10,12 @@ import bubbleSort from './algorithms/bubbleSort'
 import insertionSort from './algorithms/insertionSort'
 import selectionSort from './algorithms/selectionSort'
 import mergeSort from './algorithms/mergeSort'
+import quickSort from './algorithms/quickSort'
 
 function App() {
 	// Generating shuffled array of 1 to len
 	const generateRandomArray = (len) => {
+		setCompleted(false)
 		setSorting(false)
 		setSortedIndex([])
 
@@ -35,6 +37,7 @@ function App() {
 	const [len, setLength] = useState(30)
 	const [blocks, setBlocks] = useState([])
 	const [sorting, setSorting] = useState(false)
+	const [completed, setCompleted] = useState(true)
 	const [speed, setSpeed] = useState(250)
 	const [compare, setCompare] = useState([])
 	const [swap, setSwap] = useState([])
@@ -88,6 +91,7 @@ function App() {
 						loop(i)
 					} else {
 						setSorting(false)
+						setCompleted(true)
 					}   
 				}, speed)
 			})(0)
@@ -99,8 +103,11 @@ function App() {
 		algo === 'bubbleSort' ? sortAccOrder(bubbleSort(blocks)) : 
 		algo === 'insertionSort' ?  sortAccOrder(insertionSort(blocks)) :
 		algo === 'selectionSort' ? sortAccOrder(selectionSort(blocks)) :
-		algo === 'mergeSort' ? sortAccOrder(mergeSort(blocks)):
-		setSorting(false)
+		algo === 'mergeSort' ? sortAccOrder(mergeSort(blocks)) : 
+		algo === 'quickSort' ? sortAccOrder(quickSort(blocks)) : (() => {
+			setSorting(false)
+			setCompleted(true)
+		})()
 	}
 
 	return (
@@ -112,6 +119,7 @@ function App() {
 				handleAlgo={handleAlgo}
 				handleSort={handleSort} 
 				sorting={sorting}
+				completed={completed}
 				len={len}
 				speed={speed}
 				algo={algo}
