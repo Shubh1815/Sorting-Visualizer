@@ -32,3 +32,10 @@
 .sorted{
     background-color: #4bc52e;
 }
+
+@media(max-width: 564px){
+    .legends{
+        font-size: 0.8em;
+        text-align: center;
+    }
+}

@@ -9,6 +9,7 @@ import Legends from './components/Legends/Legends'
 import bubbleSort from './algorithms/bubbleSort'
 import insertionSort from './algorithms/insertionSort'
 import selectionSort from './algorithms/selectionSort'
+import mergeSort from './algorithms/mergeSort'
 
 function App() {
 	// Generating shuffled array of 1 to len
@@ -78,7 +79,9 @@ function App() {
 					if(arr){
 						
 						setBlocks(arr)
-						setSwap([j, k])
+						if(j !== null || k != null)
+							setSwap([j, k])
+
 					}
 
 					if (++i < order.length){
@@ -96,6 +99,7 @@ function App() {
 		algo === 'bubbleSort' ? sortAccOrder(bubbleSort(blocks)) : 
 		algo === 'insertionSort' ?  sortAccOrder(insertionSort(blocks)) :
 		algo === 'selectionSort' ? sortAccOrder(selectionSort(blocks)) :
+		algo === 'mergeSort' ? sortAccOrder(mergeSort(blocks)):
 		setSorting(false)
 	}
 
@@ -120,7 +124,7 @@ function App() {
 				sorted={sortedIndex} 
 			/>
 
-			<Legends/>
+			<Legends algo={algo}/>
 		</div>
 	);
 }
