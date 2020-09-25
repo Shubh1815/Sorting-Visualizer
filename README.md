@@ -9,5 +9,6 @@ This application is created using React for visualizing classic sorting algorith
 ```
   $ git clone https://github.com/Shubh1815/Sorting-Visualizer.git
   $ cd sorting-visualizer
+  $ npm install
   $ npm start
 ```
